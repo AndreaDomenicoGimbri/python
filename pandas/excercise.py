@@ -146,3 +146,27 @@ print(new_multi_index_df.query("height>175 and pets=='dog'"))
 #sort the dataframe by a specific column
 new_multi_index_df=new_multi_index_df.sort_values(by="weight",ascending=False)
 print(new_multi_index_df)
+
+#line graph
+new_multi_index_df.plot(title="people information",kind="line", y=["weight","height"], use_index=True)
+plt.grid()
+plt.show()
+
+#similarity between numpy's array and pandas dataframe
+
+grades_array=np.array([[85, 90, 78], [88, 92, 80], [90, 85, 88]])
+grades=pd.DataFrame(grades_array, columns=["Math", "Science", "English"], index=["Alice", "Bob", "Charlie"])
+print(grades)
+
+#grades=np.sqrt(grades)
+print(grades+1)
+print(grades["Math"]>88)
+print(grades.mean())
+
+
+bonus_points=np.array([[5, 10, 15],[2,5,6],[1,2,3]])
+bonus_points_df=pd.DataFrame(bonus_points, columns=["Math", "Science", "English"], index=["Alice", "Bob", "Charlie"])
+
+grades=grades+bonus_points_df
+print(grades)
+#when additioned two dataframe with different index or column the result will be NaN for the missing values to avoid this we can use fillna() function
